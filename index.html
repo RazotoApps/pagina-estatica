@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpentry Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 0.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .calculator {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        .calculator input {
+            width: calc(100% - 20px);
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .calculator button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .calculator button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #333;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Carpentry Services</h1>
+    </header>
+
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+        <section id="services">
+            <h2>Our Services</h2>
+            <p>We specialize in custom furniture, wooden flooring, cabinetry, and much more. Let us bring your vision to life!</p>
+        </section>
+
+        <section id="calculator" class="calculator">
+            <h2>Wood Measurement Calculator</h2>
+            <p>Calculate the cost of wood required for your project:</p>
+            <input type="number" id="length" placeholder="Length (in meters)" required>
+            <input type="number" id="width" placeholder="Width (in meters)" required>
+            <input type="number" id="price" placeholder="Price per square meter" required>
+            <button onclick="calculateCost()">Calculate</button>
+            <p id="result"></p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: contact@carpentryservices.com</p>
+            <p>Phone: +123 456 7890</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Carpentry Services. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function calculateCost() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const price = parseFloat(document.getElementById('price').value);
+
+            if (isNaN(length) || isNaN(width) || isNaN(price)) {
+                document.getElementById('result').innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            const area = length * width;
+            const totalCost = area * price;
+
+            document.getElementById('result').innerText = `Total cost: $${totalCost.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
